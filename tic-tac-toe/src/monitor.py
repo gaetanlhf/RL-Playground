@@ -34,6 +34,13 @@ class Monitor():
     def update(self):
         if self.period != None:
             if self.actualPeriod < self.period:
+                if self.board.full == True:
+                    self.terminal.message("The board is full!")
+                    self.terminal.message("We remain on the same period.")
+                    self.window.update()
+                    self.board.clean()
+                    self.window.clean()
+                    self.board.full = False
                 if self.board.finish == True:
                     if self.board.winner == self.p1.id:
                         self.p2.punish()
@@ -42,6 +49,7 @@ class Monitor():
                         self.p1.punish()
                         self.board.winner = None
                     self.terminal.learningLevel(self.actualPeriod, self.period)
+                    self.terminal.message("Let's change the period!")
                     self.window.update()
                     self.actualPeriod += 1
                     time.sleep(self.wait)

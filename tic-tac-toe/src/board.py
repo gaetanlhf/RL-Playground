@@ -23,6 +23,7 @@ class Board():
         self.matrix = numpy.zeros([self.nbColRow, self.nbColRow], dtype=int)
         self.actions = []
         self.finish = False
+        self.full = False
         self.winner = None
         for i in self.getPossibleActions():
             self.actions.append(i)
@@ -65,7 +66,7 @@ class Board():
 
     def checkIfEmpty(self):
         if self.getPossibleActions() == []:
-            self.finish = True
+            self.full = True
 
     def clean(self):
         self.matrix = numpy.zeros([self.nbColRow, self.nbColRow], dtype=int)

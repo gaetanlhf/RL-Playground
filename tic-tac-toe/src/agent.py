@@ -38,7 +38,7 @@ class Agent():
         self.saveA = None
 
     def update(self):
-        if self.board.finish == False:
+        if (self.board.finish == False) and (self.board.full == False):
             self._chooseAction(self.board.getState())
             self.window.update()
             self.board.checkIfEmpty()
