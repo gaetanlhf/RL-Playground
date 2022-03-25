@@ -64,10 +64,11 @@ class Monitor():
                 self.terminal.message("Learning completed.")
                 exit()
         else:
-            if self.board.finish == True:
+            if (self.board.finish == True) or (self.board.full == True):
                 self.board.clean()
                 self.window.clean()
                 self.board.finish = False
+                self.board.full = False
             # print(self.p1.q_table)
             self.p1.update()
             self.p2.update()
